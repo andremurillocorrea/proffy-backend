@@ -12,7 +12,7 @@ export async function up(knex: Knex) {
       .onDelete('CASCADE'); // caso delete o usuário, todas as classes são deletadas 
 
     table.timestamp('created_at')
-      .defaultTo('now()')
+      .defaultTo(knex.raw('CURRENT_TIMESTAMP'))
       .notNullable();
 
   });
